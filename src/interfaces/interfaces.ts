@@ -3,17 +3,17 @@ interface sharpSetting {
     target: string;
     width: number;
     height: number;
-}
+};
 
 interface ImageProps {
     filename?: string;
     width?: string;
     height?: string;
-}
+};
 
 export {
     sharpSetting,
-    ImageProps
-}
+    ImageProps,
+};
 
 

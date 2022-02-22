@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import {imagesResizedPath , createResized } from './../file';
+import {imagesResizedPath, createResized } from './../file';
 
 describe('Test image processing via sharp', (): void => {
   it('Invalid wrong width param', async (): Promise<void> => {

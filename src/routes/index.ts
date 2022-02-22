@@ -7,7 +7,7 @@ routes.use('/api/images', images);
 
 routes.get('/',
   (req, res) => {
-    res.send(template)
+    res.send(template);
   }
 );
 

@@ -75,4 +75,4 @@ export const template = `<!DOCTYPE html>
         })
     </script>
 </body>
-</html>`
+</html>`;
