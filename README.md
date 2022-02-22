@@ -9,13 +9,13 @@ A API for resize images.
 Install dependcies
 
 ```bash
-  npm intsall, run the following command
+  npm intsall
 ```
 
 To build, run the following command
 
 ```bash
-  npm run build, run the following command
+  npm run build
 ```
 
 To run tests, run the following command
@@ -24,7 +24,7 @@ To run tests, run the following command
   npm run jasmine
 ```
 
-To run build & tests, run the following command
+To run build & tests
 
 ```bash
   npm run test
