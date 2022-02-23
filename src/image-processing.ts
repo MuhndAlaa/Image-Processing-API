@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import {sharpSetting}from "./interfaces/interfaces";
 
-const resizeImage = async (image: sharpSetting) => {
+const resizeImage = async (image: sharpSetting): Promise<null | string> => {
   try {
     await sharp(image.source)
       .resize(image.width, image.height)
