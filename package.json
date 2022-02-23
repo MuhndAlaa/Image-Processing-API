@@ -9,7 +9,7 @@
     "test": "npm run build && npm run jasmine",
     "start": "nodemon src/index.ts",
     "lint": "eslint . --ext .ts",
-    "prettify": "prettier --write ./src/*.ts"
+    "prettify": "prettier --config .prettierrc.json 'src' --write"
   },
   "keywords": [
     "Udacity",
@@ -29,6 +29,8 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jasmine": "^4.0.2",
+    "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
     "ts-node": "^10.2.1",
@@ -36,8 +38,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "jasmine": "^3.9.0",
-    "jasmine-spec-reporter": "^7.0.0",
     "sharp": "^0.29.1",
     "supertest": "^6.1.6"
   }

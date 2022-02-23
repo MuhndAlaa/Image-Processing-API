@@ -1,33 +1,32 @@
-import { promises as fs } from "fs";
-import { ImageProps } from "./interfaces/interfaces";
-import path from "path";
-import resizeImage from "./image-processing";
+import { promises as fs } from 'fs';
+import {ImageProps} from "./interfaces/interfaces";
+import path from 'path';
+import resizeImage from './image-processing';
 
-const imagesFullPath = path.resolve(__dirname, "../assets/images/full");
-const imagesResizedPath = path.resolve(__dirname, "../assets/images/resized");
+const imagesFullPath = path.resolve(__dirname, '../assets/images/full');
+const imagesResizedPath = path.resolve(__dirname, '../assets/images/resized');
 
 async function getImgPath(props: ImageProps): Promise<null | string> {
-    if (!props.filename) {
-        return null;
-    }
+  if (!props.filename) {
+    return null;
+  }
 
-    const filePath: string =
-        props.width && props.height
-            ? path.resolve(
-                  imagesResizedPath,
-                  `${props.filename}-${props.width}x${props.height}.jpg`
-              )
-            : path.resolve(imagesFullPath, `${props.filename}.jpg`);
+  const filePath: string =
+    props.width && props.height
+      ? path.resolve(
+          imagesResizedPath,
+          `${props.filename}-${props.width}x${props.height}.jpg`
+        )
+      : path.resolve(imagesFullPath, `${props.filename}.jpg`);
 
-    return fs
-        .access(filePath)
-        .then(() => filePath)
-        .catch(() => null);
+  return fs.access(filePath).then(_=>filePath).catch(_=>null);
+
 }
 
-async function isImgAvailable(filename: string = ""): Promise<boolean> {
-    if (!filename) return false;
-    return getImgsNames().then((res) => res.includes(filename));
+async function isImgAvailable(filename: string = ''): Promise<boolean> {
+    
+  if (!filename)  return false;
+  return  getImgsNames().then(res=>res.includes(filename));
 }
 
 function getImgsNames(): Promise<string[]> {
@@ -41,56 +40,54 @@ function getImgsNames(): Promise<string[]> {
             );
             return images;
         })
-        .catch(() => []);
+        .catch((_) => []);
 }
 
 async function isResizedAvailable(props: ImageProps): Promise<boolean> {
-    if (!props.filename || !props.width || !props.height) return false;
 
-    const filePath: string = path.resolve(
-        imagesResizedPath,
-        `${props.filename}-${props.width}x${props.height}.jpg`
-    );
-    return fs
-        .access(filePath)
-        .then(() => true)
-        .catch(() => false);
+  if (!props.filename || !props.width || !props.height) return false;
+
+
+  const filePath: string = path.resolve(
+    imagesResizedPath,
+    `${props.filename}-${props.width}x${props.height}.jpg`
+  );
+    return fs.access(filePath).then(_=>true).catch(_=>false);
 }
 
-function createResizedPath(): Promise<void | null> {
-    return fs
-        .access(imagesResizedPath)
-        .then(() => null)
-        .catch(() => fs.mkdir(imagesResizedPath));
+function createResizedPath(): Promise<void|null> {
+  return  fs.access(imagesResizedPath).then(_=>null).catch(_=> fs.mkdir(imagesResizedPath));
 }
 
 async function createResized(props: ImageProps): Promise<null | string> {
-    if (!props.filename || !props.width || !props.height) return null;
+  
+  if (!props.filename || !props.width || !props.height) return null;
 
-    const filePathFull: string = path.resolve(
-        imagesFullPath,
-        `${props.filename}.jpg`
-    );
-    const filePathResized: string = path.resolve(
-        imagesResizedPath,
-        `${props.filename}-${props.width}x${props.height}.jpg`
-    );
+  const filePathFull: string = path.resolve(
+    imagesFullPath,
+    `${props.filename}.jpg`
+  );
+  const filePathResized: string = path.resolve(
+    imagesResizedPath,
+    `${props.filename}-${props.width}x${props.height}.jpg`
+  );
 
-    return await resizeImage({
-        source: filePathFull,
-        target: filePathResized,
-        width: parseInt(props.width),
-        height: parseInt(props.height),
-    });
+
+  return await resizeImage({
+    source: filePathFull,
+    target: filePathResized,
+    width: parseInt(props.width),
+    height: parseInt(props.height)
+  });
 }
 
 export {
-    imagesFullPath,
-    imagesResizedPath,
-    getImgPath,
-    isImgAvailable,
-    getImgsNames,
-    isResizedAvailable,
-    createResizedPath,
-    createResized,
-};
+  imagesFullPath ,
+  imagesResizedPath,
+  getImgPath,
+  isImgAvailable,
+  getImgsNames,
+  isResizedAvailable,
+  createResizedPath,
+  createResized
+}

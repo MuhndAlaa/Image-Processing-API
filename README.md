@@ -36,7 +36,17 @@ To start server, run the following command
   npm run start
 ```
 
+## Home endpoint
 
+```bash
+  http://localhost:4000/
+```
+
+## Image expamle endpoint
+
+```bash
+  http://localhost:4000/api/images?filename=encenadaport&width=500&height=500
+```
 
 ## Tech Stack
 

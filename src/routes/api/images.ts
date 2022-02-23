@@ -1,10 +1,10 @@
 import express from 'express';
-import  {getImgPath, isResizedAvailable, createResized} from './../../file';
+import  {getImgPath , isResizedAvailable , createResized} from './../../file';
 import validation from './helper';
 
 const images = express.Router();
 
-images.get('/', async (req, res): Promise<void> => {
+images.get('/', async (req:express.Request,res:express.Response): Promise<void> => {
 
     let error: null | string = '';
     const validationMessage = await validation(req.query);

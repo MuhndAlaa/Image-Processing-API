@@ -1,5 +1,5 @@
 import { ImageProps } from "../../interfaces/interfaces";
-import {isImgAvailable, getImgsNames} from "./../../file";
+import {isImgAvailable , getImgsNames} from "./../../file";
 
 async function validation(image: ImageProps): Promise<null | string> {
 

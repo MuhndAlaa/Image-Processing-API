@@ -6,8 +6,8 @@ const routes = express.Router();
 routes.use('/api/images', images);
 
 routes.get('/',
-  (req, res) => {
-    res.send(template);
+  (req:express.Request, res:express.Response) => {
+    res.send(template)
   }
 );
 
